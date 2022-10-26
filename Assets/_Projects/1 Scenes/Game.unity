@@ -372,7 +372,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391098271}
-  m_LocalRotation: {x: 0.26693356, y: 0.000000028720944, z: -0.00000000795524, w: 0.96371496}
+  m_LocalRotation: {x: 0.2669336, y: 3.4238033e-15, z: -1.836517e-15, w: 0.96371496}
   m_LocalPosition: {x: 0, y: 4.679, z: -4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -662,7 +662,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182404678}
-  m_LocalRotation: {x: 0.26693356, y: 0.000000028720944, z: -0.00000000795524, w: 0.96371496}
+  m_LocalRotation: {x: 0.2669336, y: 3.4238033e-15, z: -1.836517e-15, w: 0.96371496}
   m_LocalPosition: {x: 0, y: 4.679, z: -4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -873,6 +873,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711088892723624778, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+      propertyPath: m_Name
+      value: '[Holder] Gems'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439280983797828622, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1303
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439280983797828622, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1531
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439280983797828622, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2078
+      objectReference: {fileID: 0}
     - target: {fileID: 8419207072471483370, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -923,3 +939,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+--- !u!1 &8419207071577655932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8419207072471483371, guid: fa7834213145a524f9df9b1060a5c9ee, type: 3}
+  m_PrefabInstance: {fileID: 8419207071577655931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8419207071577655933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419207071577655932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7547015cd1207114bb3394714182f6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

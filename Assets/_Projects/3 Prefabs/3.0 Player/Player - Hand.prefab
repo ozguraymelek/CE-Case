@@ -356,6 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2131260732412359356}
+  - component: {fileID: 2638605163818200102}
   m_Layer: 0
   m_Name: '[Holder] Player - Hand'
   m_TagString: Untagged
@@ -376,10 +377,22 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5158366048697370380}
-  - {fileID: 7244103800349989297}
   m_Father: {fileID: 8419207072471483370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &2638605163818200102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646086505226905606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.53621113, y: 0.24577124, z: 0.83243644}
+  m_Center: {x: 0.015251458, y: 0.0063487515, z: -0.21414018}
 --- !u!1 &1810237253038742731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8419207072471483370}
+  - component: {fileID: 782207915546252073}
   m_Layer: 0
   m_Name: Player - Hand
   m_TagString: Untagged
@@ -1047,6 +1061,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782207915546252073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419207072471483371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7547015cd1207114bb3394714182f6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8563409663700125292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,35 +1140,4 @@ Transform:
   - {fileID: 1224103366252790354}
   m_Father: {fileID: 1609041734838434318}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8985827537045089540
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7244103800349989297}
-  m_Layer: 0
-  m_Name: '[Holder] Gems'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7244103800349989297
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985827537045089540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.098, z: -0.517}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2131260732412359356}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
