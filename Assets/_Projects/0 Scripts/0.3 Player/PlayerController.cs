@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace INV.Controllers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
+        [Header("Components")]
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        [Header("Settings")]
         
+    
     }
 }
+
