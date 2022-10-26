@@ -6,9 +6,7 @@ namespace INV.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [Header("Components")]
         
-        [Header("Settings")]
         
     
     }
