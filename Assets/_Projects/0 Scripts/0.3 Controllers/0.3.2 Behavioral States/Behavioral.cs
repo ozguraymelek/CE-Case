@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace INV.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class Behavioral : MonoBehaviour
     {
         
-        
-    
     }
 }
 

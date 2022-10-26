@@ -8,10 +8,10 @@ namespace INV.Events
     public class GameEvents : MonoBehaviour
     {
         [Header("<- No Parameter -> Actions for Gameplay")]
-        private Action onLevelStarted, onLevelFinished, onFailed, onSuccess, onInteractedWithObstacle;
+        public static Action onLevelStarted, onLevelFinished, onFailed, onSuccess, onInteractedWithObstacle;
 
         [Header("<- No Parameter -> Actions for Event Functions")]
-        private Action onEnable, onAwake, onStart, onUpdate, onFixedUpdate, onLateUpdate;
+        public static Action onEnable, onAwake, onStart, onUpdate, onFixedUpdate, onLateUpdate;
 
         #region All Functions
 
