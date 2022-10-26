@@ -11,9 +11,6 @@ namespace INV.Inputs
         public static event Action<Vector3> onPointerPressed;
         public static event Action<Vector3> onPointerMoved;
         public static event Action<Vector3> onPointerRemoved;
-
-        [Header("Script References")] [SerializeField]
-        private GameEvents gameEvents;
         
         [Header("Settings")] private Vector3 lastMousePosition;
 
@@ -72,5 +69,12 @@ namespace INV.Inputs
         #endregion
 
         #endregion
+    }
+    
+    [Serializable]
+    public class InputData
+    {
+        [Header("Bool Settings")] 
+        [SerializeField] internal bool isPressing = false;
     }
 }
