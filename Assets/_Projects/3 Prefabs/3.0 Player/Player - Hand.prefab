@@ -1037,8 +1037,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8419207072471483370}
-  - component: {fileID: 782207915546252073}
-  - component: {fileID: 4456356985325141120}
+  - component: {fileID: 4908737008687205833}
+  - component: {fileID: 804578177982432039}
   m_Layer: 0
   m_Name: Player - Hand
   m_TagString: Untagged
@@ -1062,7 +1062,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &782207915546252073
+--- !u!114 &4908737008687205833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7547015cd1207114bb3394714182f6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4456356985325141120
+--- !u!114 &804578177982432039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1086,13 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c3132b6852d6b40a4713d6e3289ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behavioralPlayerData:
-    playerForwardSpeed: 5
-    playerSensitivity: 15
-    playerBoundX: 3
-    speedDecreaseFactor: 0
-    speedIncreaseFactor: 0
-    playerCollider: {fileID: 2638605163818200102}
+  playerController: {fileID: 4908737008687205833}
   inputData:
     isPressing: 0
 --- !u!1 &8563409663700125292

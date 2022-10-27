@@ -39,7 +39,7 @@ namespace INV.Controllers
         /// </summary>
         private void InitializeInterfaces()
         {
-            iBehavioralPlayerData = new BehavioralPlayerData(.20f, 10f, 1.48f, 
+            iBehavioralPlayerData = new BehavioralPlayerData(5f, 10f, 1.48f, 
                 0, 0,GetComponent<Collider>(),GetComponent<Rigidbody>());
         }
 
@@ -51,6 +51,7 @@ namespace INV.Controllers
         {
             GameEvents.onUpdate += MoveForward;
             InitializeInterfaces();
+            print("tten");
         }
         
         #endregion
