@@ -52,7 +52,7 @@ namespace INV.Inputs
             if (Input.GetMouseButton(0))
             {
                 var currentMousePosition = Input.mousePosition;
-
+                
                 if (lastMousePosition != currentMousePosition)
                 {
                     onPointerMoved?.Invoke(currentMousePosition - lastMousePosition);

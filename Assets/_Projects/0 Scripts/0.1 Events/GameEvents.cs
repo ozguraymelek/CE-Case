@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using INV.Managers;
 using UnityEngine;
 
 namespace INV.Events
@@ -22,7 +23,17 @@ namespace INV.Events
             ResetGameplayActions();
             ResetGameActions();
         }
-        
+
+        private void Start()
+        {
+            OnStart();
+        }
+
+        private void Update()
+        {
+            OnUpdate();
+        }
+
         #endregion
         
         #region Initializes
