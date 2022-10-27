@@ -16,8 +16,6 @@ namespace INV.Controllers
         [Header("Struct References")] [SerializeField]
         private BehavioralPlayerData behavioralPlayerData;
 
-        [SerializeField] private ScreenMultiplierData screenMultiplierData;
-
         [Header("Class References")] [SerializeField]
         internal InputData inputData;
 

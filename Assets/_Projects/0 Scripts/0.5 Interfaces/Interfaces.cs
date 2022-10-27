@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using INV.Managers;
 using UnityEngine;
 
 namespace INV.Interfaces
@@ -55,7 +56,7 @@ namespace INV.Interfaces
 
     namespace ScreenMultiplier
     {
-        public interface IScreenMultiplierData : IScreenHeightMultiplier, IScreenWidthMultiplier
+        public interface IScreenMultiplierData : IScreenHeightMultiplier, IScreenWidthMultiplier , IReturnScreenMultiplierData
         {
             // If there is a script that you need to use all behavioral interfaces,
             // apply this interface (IBehavioralPlayerData) directly!
@@ -69,6 +70,11 @@ namespace INV.Interfaces
         public interface IScreenHeightMultiplier
         {
             float GetScreenHeight();
+        }
+
+        public interface IReturnScreenMultiplierData
+        {
+            IScreenMultiplierData GetIScreenMultiplierData();
         }
     }
     

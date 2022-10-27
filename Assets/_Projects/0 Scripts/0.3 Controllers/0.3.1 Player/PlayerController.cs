@@ -1,5 +1,6 @@
 using INV.Events;
 using INV.Interfaces.Behavioral;
+using INV.Interfaces.ScreenMultiplier;
 using INV.Managers;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace INV.Controllers
         [SerializeField] private IBehavioralPlayerData iBehavioralPlayerData;
         
         [Header("Struct References")]
-        [SerializeField] private ScreenMultiplierData screenMultiplierData;
+        [SerializeField] private IScreenMultiplierData iScreenMultiplierData;
         
         #region Event Functions
 
@@ -39,8 +40,11 @@ namespace INV.Controllers
         /// </summary>
         private void InitializeInterfaces()
         {
-            iBehavioralPlayerData = new BehavioralPlayerData(5f, 10f, 1.48f, 
+            iBehavioralPlayerData = new BehavioralPlayerData(5f, 40f, 1.48f, 
                 0, 0,GetComponent<Collider>(),GetComponent<Rigidbody>());
+
+            iScreenMultiplierData = new ScreenMultiplierData(1.0f / Screen.width , 
+                1.0f / Screen.height);
         }
 
         #endregion
@@ -67,10 +71,10 @@ namespace INV.Controllers
 
         internal void MoveAxisX(Vector3 mouseMovementDirection)
         {
-            print(screenMultiplierData.screenWidthMultiplier);
+            print(iScreenMultiplierData.GetIScreenMultiplierData().GetScreenWidth());
             
             var mouseToWorldDirection =
-                new Vector3(mouseMovementDirection.x, 0f, 0f);
+                new Vector3(mouseMovementDirection.x * iScreenMultiplierData.GetIScreenMultiplierData().GetScreenWidth(), 0f, 0f);
             
             print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
 

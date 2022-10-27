@@ -15,8 +15,6 @@ namespace INV.Inputs
         
         [Header("Settings")] private Vector3 lastMousePosition;
 
-        [SerializeField] private Behavioral bg;
-
         #region All Functions
 
         #region Event Functions

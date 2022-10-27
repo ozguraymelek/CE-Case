@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using INV.Events;
+using INV.Interfaces.ScreenMultiplier;
 using UnityEngine;
 
 namespace INV.Managers
@@ -9,13 +10,13 @@ namespace INV.Managers
     public class GameManager : MonoBehaviour
     {
         [Header("Struct References")] 
-        [SerializeField] private ScreenMultiplierData screenMultiplierData;
+        [SerializeField] private IScreenMultiplierData iScreenMultiplierData;
         
         #region Event Functions
 
         private void Awake()
         {
-            InitializeScreenMultiplier();
+            InitializeInterfaces();
             // OnStart();
         }
 
@@ -30,11 +31,13 @@ namespace INV.Managers
 
         private void InitializeScreenMultiplier()
         {
-            screenMultiplierData.screenWidthMultiplier = 1.0f / Screen.width;
-            screenMultiplierData.screenHeightMultiplier = 1.0f / Screen.height;
             
-            print("width : " + screenMultiplierData.screenWidthMultiplier);
-            print("height : " + screenMultiplierData.screenHeightMultiplier);
+        }
+
+        private void InitializeInterfaces()
+        {
+            iScreenMultiplierData =
+                new ScreenMultiplierData(1.0f / Screen.width, 1.0f / Screen.height);
         }
         
         #endregion
@@ -48,10 +51,31 @@ namespace INV.Managers
         
     }
     
-    public struct ScreenMultiplierData
+    public struct ScreenMultiplierData : IScreenMultiplierData
     {
         [Header("Float Settings")]
         internal float screenWidthMultiplier;
         internal float screenHeightMultiplier;
+        
+        public ScreenMultiplierData(float screenWidthMultiplier, float screenHeightMultiplier)
+        {
+            this.screenWidthMultiplier = screenWidthMultiplier;
+            this.screenHeightMultiplier = screenHeightMultiplier;
+        }
+
+        public float GetScreenHeight()
+        {
+            return screenHeightMultiplier;
+        }
+
+        public float GetScreenWidth()
+        {
+            return screenWidthMultiplier;
+        }
+
+        public IScreenMultiplierData GetIScreenMultiplierData()
+        {
+            return this;
+        }
     }
 }
