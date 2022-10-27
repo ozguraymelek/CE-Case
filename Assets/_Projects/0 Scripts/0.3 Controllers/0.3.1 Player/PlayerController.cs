@@ -1,4 +1,5 @@
 using INV.Events;
+using INV.Interfaces.Behavioral;
 using INV.Managers;
 using UnityEngine;
 
@@ -6,8 +7,10 @@ namespace INV.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [Header("Struct References")] 
-        [SerializeField] private BehavioralPlayerData iBehavioralPlayerData;
+        [Header("Interface References")] 
+        [SerializeField] private IBehavioralPlayerData iBehavioralPlayerData;
+        
+        [Header("Struct References")]
         [SerializeField] private ScreenMultiplierData screenMultiplierData;
         
         #region Event Functions
@@ -36,8 +39,8 @@ namespace INV.Controllers
         /// </summary>
         private void InitializeInterfaces()
         {
-            iBehavioralPlayerData = new BehavioralPlayerData(20, 150, 10, 
-                0, 0,GetComponent<Collider>());
+            iBehavioralPlayerData = new BehavioralPlayerData(.20f, 10f, 1.48f, 
+                0, 0,GetComponent<Collider>(),GetComponent<Rigidbody>());
         }
 
         #endregion
@@ -57,7 +60,8 @@ namespace INV.Controllers
         private void MoveForward()
         {
             print(iBehavioralPlayerData.GetPlayerForwardSpeed());
-            transform.position += Vector3.forward * (iBehavioralPlayerData.GetPlayerForwardSpeed() * Time.deltaTime);
+            // iBehavioralPlayerData.GetPlayerRigidbody().velocity = Vector3.forward * iBehavioralPlayerData.GetPlayerForwardSpeed();
+            transform.position += Vector3.forward * (iBehavioralPlayerData.GetPlayerForwardSpeed() * Time.fixedDeltaTime);
         }
 
         internal void MoveAxisX(Vector3 mouseMovementDirection)
@@ -65,12 +69,14 @@ namespace INV.Controllers
             print(screenMultiplierData.screenWidthMultiplier);
             
             var mouseToWorldDirection =
-                new Vector3(mouseMovementDirection.x * screenMultiplierData.screenWidthMultiplier, 0f, 0f);
+                new Vector3(mouseMovementDirection.x, 0f, 0f);
             
             print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
+
+            var addVector = mouseToWorldDirection *
+                            (iBehavioralPlayerData.GetPlayerSensitivityData() * Time.fixedDeltaTime);
             
-            var addVector = mouseToWorldDirection * (iBehavioralPlayerData.GetPlayerSensitivityData() * Time.deltaTime);
-            
+            // iBehavioralPlayerData.GetPlayerRigidbody().AddForce(addVector);
             transform.position += addVector;
             
             print("MoveAxisX");

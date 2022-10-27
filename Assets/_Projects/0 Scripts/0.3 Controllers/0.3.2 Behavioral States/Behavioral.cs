@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using INV.Events;
 using INV.Inputs;
-using INV.Interfaces.BehavioralInterfaces;
+using INV.Interfaces.Behavioral;
 using INV.Managers;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ namespace INV.Controllers
         [SerializeField] private ScreenMultiplierData screenMultiplierData;
 
         [Header("Class References")] [SerializeField]
-        private InputData inputData;
+        internal InputData inputData;
 
         #region Event Functions
 
@@ -143,18 +143,19 @@ namespace INV.Controllers
 
     public struct BehavioralPlayerData : IBehavioralPlayerData
     {
-        [Header("Float Settings")] [SerializeField]
-        internal float playerForwardSpeed;
+        [Header("Float Settings")] 
+        [SerializeField] internal float playerForwardSpeed;
 
         [SerializeField] internal float playerSensitivity;
         [SerializeField] internal float playerBoundX;
         [SerializeField] internal float speedDecreaseFactor, speedIncreaseFactor;
 
-        [Header("Components")] [SerializeField]
-        internal Collider playerCollider;
+        [Header("Components")]
+        [SerializeField] internal Collider playerCollider;
+        [SerializeField] internal Rigidbody playerRigidbody;
 
         public BehavioralPlayerData(float playerForwardSpeed, float playerSensitivity, float playerBoundX, float speedDecreaseFactor,
-            float speedIncreaseFactor, Collider playerCollider)
+            float speedIncreaseFactor, Collider playerCollider, Rigidbody playerRigidbody)
         {
             this.playerForwardSpeed = playerForwardSpeed;
             this.playerSensitivity = playerSensitivity;
@@ -162,6 +163,7 @@ namespace INV.Controllers
             this.speedDecreaseFactor = speedDecreaseFactor;
             this.speedIncreaseFactor = speedIncreaseFactor;
             this.playerCollider = playerCollider;
+            this.playerRigidbody = playerRigidbody;
         }
         
         public float GetPlayerForwardSpeed()
@@ -182,6 +184,11 @@ namespace INV.Controllers
         public Collider GetPlayerCollider()
         {
             return playerCollider;
+        }
+
+        public Rigidbody GetPlayerRigidbody()
+        {
+            return playerRigidbody;
         }
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using INV.Controllers;
 using INV.Events;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace INV.Inputs
         public static event Action<Vector3> onPointerRemoved;
         
         [Header("Settings")] private Vector3 lastMousePosition;
+
+        [SerializeField] private Behavioral bg;
 
         #region All Functions
 
@@ -34,14 +37,14 @@ namespace INV.Inputs
 
         private void OnStart()
         {
-            GameEvents.onUpdate += OnUpdate;
+            GameEvents.onFixedUpdate += OnFixedUpdate;
         }
 
         #endregion
 
         #region Implementings
 
-        private void OnUpdate()
+        private void OnFixedUpdate()
         {
             if (Input.GetMouseButtonDown(0))
             {

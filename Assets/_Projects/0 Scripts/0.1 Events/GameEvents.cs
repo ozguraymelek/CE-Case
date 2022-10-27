@@ -34,6 +34,11 @@ namespace INV.Events
             OnUpdate();
         }
 
+        private void FixedUpdate()
+        {
+            OnFixedUpdate();
+        }
+
         #endregion
         
         #region Initializes

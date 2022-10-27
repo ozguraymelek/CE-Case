@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace INV.Interfaces
 {
-    namespace BehavioralInterfaces
+    namespace Behavioral
     {
         #region Behavioral.cs
 
         public interface IBehavioralPlayerData : IBehavioralPlayerForwardSpeedData, IBehavioralPlayerSensitivityData,
-            IBehavioralPlayerBoundX, IBehavioralPlayerCollider
+            IBehavioralPlayerBoundX, IBehavioralPlayerCollider, IBehavioralPlayerRigidbody
         {
             // If there is a script that you need to use all behavioral interfaces,
             // apply this interface (IBehavioralPlayerData) directly!
@@ -43,6 +43,73 @@ namespace INV.Interfaces
         public interface IBehavioralPlayerCollider
         {
             Collider GetPlayerCollider();
+        }
+
+        public interface IBehavioralPlayerRigidbody
+        {
+            Rigidbody GetPlayerRigidbody();
+        }
+
+        #endregion
+    }
+
+    namespace ScreenMultiplier
+    {
+        public interface IScreenMultiplierData : IScreenHeightMultiplier, IScreenWidthMultiplier
+        {
+            // If there is a script that you need to use all behavioral interfaces,
+            // apply this interface (IBehavioralPlayerData) directly!
+        }
+        
+        public interface IScreenWidthMultiplier
+        {
+            float GetScreenWidth();
+        }
+        
+        public interface IScreenHeightMultiplier
+        {
+            float GetScreenHeight();
+        }
+    }
+    
+    namespace UnityEventFunctions
+    {
+        #region Unity Events
+
+        public interface IEventsUnityFunctions : IOnEnable, IOnAwake, IOnStart, IOnUpdate, IOnFixedUpdate, IOnLateUpdate
+        {
+            // If there is a script that you need to use all unity event interfaces,
+            // apply this interface (IEventsUnityFunctions) directly!
+        }
+
+        public interface IOnEnable
+        {
+            void OnEnableA();
+        }
+
+        public interface IOnAwake
+        {
+            void OnAwake();
+        }
+
+        public interface IOnStart
+        {
+            void OnStart();
+        }
+
+        public interface IOnUpdate
+        {
+            void OnUpdate();
+        }
+    
+        public interface IOnFixedUpdate
+        {
+            void OnFixedUpdate();
+        }
+    
+        public interface IOnLateUpdate
+        {
+            void OnLateUpdate();
         }
 
         #endregion

@@ -48,45 +48,10 @@ namespace INV.Managers
         
     }
     
-    [Serializable]
     public struct ScreenMultiplierData
     {
         [Header("Float Settings")]
         internal float screenWidthMultiplier;
         internal float screenHeightMultiplier;
-    }
-
-    public interface IEventsUnityFunctions : IOnEnable, IOnAwake, IOnStart, IOnUpdate, IOnFixedUpdate, IOnLateUpdate
-    {
-    }
-
-    public interface IOnEnable
-    {
-        void OnEnableA();
-    }
-
-    public interface IOnAwake
-    {
-        void OnAwake();
-    }
-
-    public interface IOnStart
-    {
-        void OnStart();
-    }
-
-    public interface IOnUpdate
-    {
-        void OnUpdate();
-    }
-    
-    public interface IOnFixedUpdate
-    {
-        void OnFixedUpdate();
-    }
-    
-    public interface IOnLateUpdate
-    {
-        void OnLateUpdate();
     }
 }
