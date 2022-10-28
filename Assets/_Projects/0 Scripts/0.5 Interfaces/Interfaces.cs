@@ -58,8 +58,8 @@ namespace INV.Interfaces
     {
         public interface IScreenMultiplierData : IScreenHeightMultiplier, IScreenWidthMultiplier
         {
-            // If there is a script that you need to use all behavioral interfaces,
-            // apply this interface (IBehavioralPlayerData) directly!
+            // If there is a script that you need to use "all" screen data interfaces,
+            // apply this interface (IScreenMultiplierData) directly!
         }
         
         public interface IScreenWidthMultiplier
@@ -79,7 +79,7 @@ namespace INV.Interfaces
 
         public interface IEventsUnityFunctions : IOnEnable, IOnAwake, IOnStart, IOnUpdate, IOnFixedUpdate, IOnLateUpdate
         {
-            // If there is a script that you need to use all unity event interfaces,
+            // If there is a script that you need to use "all" unity event interfaces,
             // apply this interface (IEventsUnityFunctions) directly!
         }
 

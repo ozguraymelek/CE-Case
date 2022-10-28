@@ -6,13 +6,12 @@ using UnityEngine;
 
 namespace INV.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour , IScreenWidthMultiplier
     {
         [Header("Interface References")] 
         [SerializeField] private IBehavioralPlayerData iBehavioralPlayerData;
+        [SerializeField] private IScreenWidthMultiplier iScreenMultiplierData;
         
-        [Header("Struct References")]
-        [SerializeField] private IScreenMultiplierData iScreenMultiplierData;
         
         #region Event Functions
 
@@ -61,6 +60,15 @@ namespace INV.Controllers
         }
         
         #endregion
+
+        #region Interface Implementations
+        
+        public float GetScreenWidth()
+        {
+            return iScreenMultiplierData.GetScreenWidth();
+        }
+
+        #endregion
         
         #region Update -> Player Move Axis-Z
 
@@ -73,10 +81,10 @@ namespace INV.Controllers
 
         internal void MoveAxisX(Vector3 mouseMovementDirection)
         {
-            print(iScreenMultiplierData.GetScreenWidth());
+            print(GetScreenWidth());
             
             var mouseToWorldDirection =
-                new Vector3(mouseMovementDirection.x * iScreenMultiplierData.GetScreenWidth(), 0f, 0f);
+                new Vector3(mouseMovementDirection.x * GetScreenWidth(), 0f, 0f);
             
             print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
 
