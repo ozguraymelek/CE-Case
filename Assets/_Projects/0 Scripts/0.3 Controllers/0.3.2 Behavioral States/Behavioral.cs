@@ -45,18 +45,18 @@ namespace INV.Controllers
         {
             Actions.onInteractedWithObstacle += OnInteractedWithObstacle;
 
-            InputHandler.onPointerMoved += OnPointerMoved;
-            InputHandler.onPointerPressed += OnPointerPressed;
-            InputHandler.onPointerRemoved += OnPointerRemoved;
+            // InputHandler.onPointerMoved += OnPointerMoved;
+            // InputHandler.onPointerPressed += OnPointerPressed;
+            // InputHandler.onPointerRemoved += OnPointerRemoved;
         }
 
         private void UnSubscribe()
         {
             Actions.onInteractedWithObstacle -= OnInteractedWithObstacle;
 
-            InputHandler.onPointerMoved -= OnPointerMoved;
-            InputHandler.onPointerPressed -= OnPointerPressed;
-            InputHandler.onPointerRemoved -= OnPointerRemoved;
+            // InputHandler.onPointerMoved -= OnPointerMoved;
+            // InputHandler.onPointerPressed -= OnPointerPressed;
+            // InputHandler.onPointerRemoved -= OnPointerRemoved;
         }
 
         #endregion

@@ -7,28 +7,8 @@ using UnityEngine;
 
 namespace INV.Events
 {
-    public class Actions : IEventsUnityFunctions
-    {
-        [Header("<- No Parameter -> Actions for Gameplay")]
-        public static Action onLevelStarted, onLevelFinished, onFailed, onSuccess, onInteractedWithObstacle;
-
-        [Header("<- No Parameter -> Actions for Event Functions")]
-        public static Action onEnable, onAwake, onStart, onUpdate, onFixedUpdate, onLateUpdate;
-
-        public void Invoke(Action action)
-        {
-            action?.Invoke();
-        }
-    }
-    
     public class GameEvents : MonoBehaviour
     {
-
-        private void InitializeActions()
-        {
-            var actions = new Actions();
-        }
-
         #region All Functions
 
         #region Event Functions
@@ -102,5 +82,19 @@ namespace INV.Events
         #endregion
 
         #endregion
+    }
+    
+    public class Actions : IEventsUnityFunctions
+    {
+        [Header("<- No Parameter -> Actions for Gameplay")]
+        public static Action onLevelStarted, onLevelFinished, onFailed, onSuccess, onInteractedWithObstacle;
+
+        [Header("<- No Parameter -> Actions for Event Functions")]
+        public static Action onEnable, onAwake, onStart, onUpdate, onFixedUpdate, onLateUpdate;
+
+        public void Invoke(Action action)
+        {
+            action?.Invoke();
+        }
     }
 }

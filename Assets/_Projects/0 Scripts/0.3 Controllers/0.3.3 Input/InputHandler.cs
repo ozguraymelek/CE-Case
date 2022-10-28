@@ -1,20 +1,16 @@
 using System;
 using INV.Events;
+using INV.Interfaces.Inputs;
 using INV.Interfaces.UnityEventFunctions;
 using UnityEngine;
 
 namespace INV.Inputs
 {
     public class InputHandler : MonoBehaviour
-    { 
-        [field: Header("Event Actions")]
-        public static event Action<Vector3> onPointerPressed;
-        public static event Action<Vector3> onPointerMoved;
-        public static event Action<Vector3> onPointerRemoved;
-
+    {
         [Header("Interface References")]
         private IEventsUnityFunctions _iUnityEventFunctions;
-        
+        private IInputsEvent<Vector3> _iInputsEvent;
         
         [Header("Settings")] private Vector3 lastMousePosition;
 
@@ -42,8 +38,8 @@ namespace INV.Inputs
         private void InitializeInterfaces()
         {
             _iUnityEventFunctions = new Actions();
+            _iInputsEvent = new InputsEvent<Vector3>();
         }
-        
 
         #endregion
         
@@ -57,7 +53,7 @@ namespace INV.Inputs
         private void OnStart()
         {
             Actions.onFixedUpdate += OnFixedUpdate;
-            print(this.name + " started!");
+            
         }
 
         #endregion
@@ -69,7 +65,7 @@ namespace INV.Inputs
             if (Input.GetMouseButtonDown(0))
             {
                 lastMousePosition = Input.mousePosition;
-                onPointerPressed?.Invoke(lastMousePosition);
+                _iInputsEvent.Invoke(InputsEvent<Vector3>.onPointerPressed, lastMousePosition);
             }
 
             if (Input.GetMouseButton(0))
@@ -78,20 +74,33 @@ namespace INV.Inputs
                 
                 if (lastMousePosition != currentMousePosition)
                 {
-                    onPointerMoved?.Invoke(currentMousePosition - lastMousePosition);
+                    _iInputsEvent.Invoke(InputsEvent<Vector3>.onPointerMoved, currentMousePosition - lastMousePosition);
                     lastMousePosition = currentMousePosition;
                 }
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                onPointerRemoved?.Invoke(Input.mousePosition);
+                _iInputsEvent.Invoke(InputsEvent<Vector3>.onPointerRemoved, Input.mousePosition);
             }
         }
 
         #endregion
 
         #endregion
+    }
+    
+    public class InputsEvent<T> : IInputsEvent<T>
+    {
+        [field: Header("Event Actions")]
+        public static Action<T> onPointerPressed;
+        public static Action<T> onPointerMoved;
+        public static Action<T> onPointerRemoved;
+        
+        public void Invoke(Action<T> action, T position)
+        {
+            action?.Invoke(position);
+        }
     }
     
     [Serializable]

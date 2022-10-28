@@ -87,12 +87,12 @@ namespace INV.Interfaces
 
         public interface IOnEnable
         {
-            void OnEnableA();
+            void Invoke(Action action);
         }
 
         public interface IOnAwake
         {
-            void OnAwake();
+            void Invoke(Action action);
         }
 
         public interface IOnStart
@@ -102,7 +102,7 @@ namespace INV.Interfaces
 
         public interface IOnUpdate
         {
-            void OnUpdate();
+            void Invoke(Action action);
         }
     
         public interface IOnFixedUpdate
@@ -112,9 +112,67 @@ namespace INV.Interfaces
     
         public interface IOnLateUpdate
         {
-            void OnLateUpdate();
+            void Invoke(Action action);
         }
 
         #endregion
+    }
+
+    namespace Inputs
+    {
+        #region Events
+        
+        public interface IInputsEvent<T> : IOnPointerPressedEvent<T>, IOnPointerMovedEvent<T>, IOnPointerRemovedEvent<T>
+        {
+            // If there is a script that you need to use "all" pointer event interfaces,
+            // apply this interface (IEventsUnityFunctions) directly!
+            
+            new void Invoke(Action<T> action, T position);
+        }
+
+        public interface IOnPointerPressedEvent<T>
+        {
+            void Invoke(Action<T> action, T position);
+        }
+        
+        public interface IOnPointerMovedEvent<T>
+        {
+            void Invoke(Action<T> action, T position);
+        }
+        
+        public interface IOnPointerRemovedEvent<T>
+        {
+            void Invoke(Action<T> action, T position);
+        }
+        
+
+        #endregion
+
+        #region X
+
+        public interface IInputs<T> : IOnPointerPressed<T>, IOnPointerMoved<T>, IOnPointerRemoved<T>
+        {
+            // If there is a script that you need to use "all" pointer interfaces,
+            // apply this interface (IEventsUnityFunctions) directly!
+            
+            new void Invoke(Action<T> action, T position);
+        }
+        
+        public interface IOnPointerPressed<in T>
+        {
+            void Invoke(T anyComponent);
+        }
+        
+        public interface IOnPointerMoved<in T>
+        {
+            void Invoke(T anyComponent);
+        }
+        
+        public interface IOnPointerRemoved<in T>
+        {
+            void Invoke(T anyComponent);
+        }
+        #endregion
+        
     }
 }

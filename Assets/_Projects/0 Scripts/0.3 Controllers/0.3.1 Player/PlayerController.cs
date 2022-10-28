@@ -55,8 +55,9 @@ namespace INV.Controllers
 
         private void OnStart()
         {
-            print("tten");
+            
         }
+        
         
         #endregion
 
