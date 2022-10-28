@@ -31,7 +31,7 @@ namespace INV.Controllers
 
         private void UnSubscribe()
         {
-            GameEvents.onUpdate -= MoveForward;
+            
         }
         
         /// <summary>
@@ -54,7 +54,6 @@ namespace INV.Controllers
 
         private void OnStart()
         {
-            GameEvents.onUpdate += MoveForward;
             InitializeInterfaces();
             print("tten");
         }
@@ -71,14 +70,7 @@ namespace INV.Controllers
         #endregion
         
         #region Update -> Player Move Axis-Z
-
-        private void MoveForward()
-        {
-            // print(iBehavioralPlayerData.GetPlayerForwardSpeed());
-            // // iBehavioralPlayerData.GetPlayerRigidbody().velocity = Vector3.forward * iBehavioralPlayerData.GetPlayerForwardSpeed();
-            // transform.position += Vector3.forward * (iBehavioralPlayerData.GetPlayerForwardSpeed() * Time.fixedDeltaTime);
-        }
-
+        
         internal void MoveAxisX(Vector3 mouseMovementDirection)
         {
             print(GetScreenWidth());
