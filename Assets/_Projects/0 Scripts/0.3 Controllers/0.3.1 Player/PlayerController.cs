@@ -40,9 +40,11 @@ namespace INV.Controllers
         /// </summary>
         private void InitializeInterfaces()
         {
+            // ReSharper disable once HeapView.BoxingAllocation
             iBehavioralPlayerData = new BehavioralPlayerData(5f, 40f, 1.48f, 
                 0, 0,GetComponent<Collider>(),GetComponent<Rigidbody>());
 
+            // ReSharper disable once HeapView.BoxingAllocation
             iScreenMultiplierData = new ScreenMultiplierData(1.0f / Screen.width , 
                 1.0f / Screen.height);
         }
@@ -64,17 +66,17 @@ namespace INV.Controllers
 
         private void MoveForward()
         {
-            print(iBehavioralPlayerData.GetPlayerForwardSpeed());
-            // iBehavioralPlayerData.GetPlayerRigidbody().velocity = Vector3.forward * iBehavioralPlayerData.GetPlayerForwardSpeed();
-            transform.position += Vector3.forward * (iBehavioralPlayerData.GetPlayerForwardSpeed() * Time.fixedDeltaTime);
+            // print(iBehavioralPlayerData.GetPlayerForwardSpeed());
+            // // iBehavioralPlayerData.GetPlayerRigidbody().velocity = Vector3.forward * iBehavioralPlayerData.GetPlayerForwardSpeed();
+            // transform.position += Vector3.forward * (iBehavioralPlayerData.GetPlayerForwardSpeed() * Time.fixedDeltaTime);
         }
 
         internal void MoveAxisX(Vector3 mouseMovementDirection)
         {
-            print(iScreenMultiplierData.GetIScreenMultiplierData().GetScreenWidth());
+            print(iScreenMultiplierData.GetScreenWidth());
             
             var mouseToWorldDirection =
-                new Vector3(mouseMovementDirection.x * iScreenMultiplierData.GetIScreenMultiplierData().GetScreenWidth(), 0f, 0f);
+                new Vector3(mouseMovementDirection.x * iScreenMultiplierData.GetScreenWidth(), 0f, 0f);
             
             print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
 

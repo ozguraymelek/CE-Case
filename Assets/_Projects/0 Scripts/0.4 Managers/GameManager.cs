@@ -54,8 +54,8 @@ namespace INV.Managers
     public struct ScreenMultiplierData : IScreenMultiplierData
     {
         [Header("Float Settings")]
-        internal float screenWidthMultiplier;
-        internal float screenHeightMultiplier;
+        private float screenWidthMultiplier;
+        private float screenHeightMultiplier;
         
         public ScreenMultiplierData(float screenWidthMultiplier, float screenHeightMultiplier)
         {
@@ -71,11 +71,6 @@ namespace INV.Managers
         public float GetScreenWidth()
         {
             return screenWidthMultiplier;
-        }
-
-        public IScreenMultiplierData GetIScreenMultiplierData()
-        {
-            return this;
         }
     }
 }

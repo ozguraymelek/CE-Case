@@ -189,7 +189,4 @@ namespace INV.Controllers
             return playerRigidbody;
         }
     }
-
-    
 }
-
