@@ -120,7 +120,7 @@ namespace INV.Interfaces
 
     namespace Inputs
     {
-        #region Events
+        #region Invoke Events
         
         public interface IInputsEvent<T> : IOnPointerPressedEvent<T>, IOnPointerMovedEvent<T>, IOnPointerRemovedEvent<T>
         {
@@ -148,31 +148,52 @@ namespace INV.Interfaces
 
         #endregion
 
-        #region X
+        #region Events
 
         public interface IInputs<T> : IOnPointerPressed<T>, IOnPointerMoved<T>, IOnPointerRemoved<T>
         {
             // If there is a script that you need to use "all" pointer interfaces,
             // apply this interface (IEventsUnityFunctions) directly!
             
-            new void Invoke(Action<T> action, T position);
+            void Invoke(Action<T> action, T position);
         }
         
         public interface IOnPointerPressed<in T>
         {
-            void Invoke(T anyComponent);
+            void OnPointerPressed(T anyComponent);
         }
         
         public interface IOnPointerMoved<in T>
         {
-            void Invoke(T anyComponent);
+            void OnPointerMoved(T anyComponent);
         }
         
         public interface IOnPointerRemoved<in T>
         {
-            void Invoke(T anyComponent);
+            void OnPointerRemoved(T anyComponent);
         }
         #endregion
-        
+
+        #region Data
+
+        public interface IInputData : IInputIsPressingData
+        {
+            // If there is a script that you need to use "all" input interfaces,
+            // apply this interface (IEventsUnityFunctions) directly!
+        }
+
+        public interface IInputIsPressingData
+        {
+            bool GetIsPressingData();
+            void SetIsPressingData(bool state);
+        }
+
+        public interface IInputLastMousePosition
+        {
+            Vector3 GetLastMousePosition();
+            void SetLastMousePosition(Vector3 currentPosition);
+        }
+
+        #endregion
     }
 }

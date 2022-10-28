@@ -1,12 +1,14 @@
 using INV.Events;
+using INV.Inputs;
 using INV.Interfaces.Behavioral;
+using INV.Interfaces.Inputs;
 using INV.Interfaces.ScreenMultiplier;
 using INV.Managers;
 using UnityEngine;
 
 namespace INV.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IOnPointerMoved<Vector3>
     {
         [Header("Interface References")] 
         [SerializeField] private IBehavioralPlayerData iBehavioralPlayerData;
@@ -18,16 +20,22 @@ namespace INV.Controllers
         private void Start()
         {
             InitializeInterfaces();
-            InitializeSubscribes();
+            InitializeActionSubscribes();
+            InitializeInputSubscribes();
         }
 
         #endregion
         
         #region Initializes
 
-        private void InitializeSubscribes()
+        private void InitializeActionSubscribes()
         {
             Actions.onStart += OnStart;
+        }
+
+        private void InitializeInputSubscribes()
+        {
+            InputsEvent<Vector3>.onPointerMoved += OnPointerMoved;
         }
 
         private void UnSubscribe()
@@ -63,6 +71,10 @@ namespace INV.Controllers
 
         #region Interface Implementations
         
+        public void OnPointerMoved(Vector3 mouseMovementDirection)
+        {
+            MoveAxisX(mouseMovementDirection);
+        }
 
         #endregion
         
@@ -73,15 +85,11 @@ namespace INV.Controllers
             var mouseToWorldDirection =
                 new Vector3((float)(mouseMovementDirection.x * iScreenMultiplierData?.GetScreenWidth()), 0f, 0f);
             
-            print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
-
             var addVector = mouseToWorldDirection *
                             (iBehavioralPlayerData.GetPlayerSensitivityData() * Time.fixedDeltaTime);
             
             // iBehavioralPlayerData.GetPlayerRigidbody().AddForce(addVector);
             transform.position += addVector;
-            
-            print("MoveAxisX");
             
             if (transform.position.x < -iBehavioralPlayerData.GetPlayerBoundX())
                 transform.position = new Vector3(-iBehavioralPlayerData.GetPlayerBoundX(), transform.position.y, transform.position.z);

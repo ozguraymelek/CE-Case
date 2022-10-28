@@ -3,6 +3,7 @@ using System.Collections;
 using INV.Events;
 using INV.Inputs;
 using INV.Interfaces.Behavioral;
+using INV.Interfaces.Inputs;
 using INV.Managers;
 using UnityEngine;
 
@@ -16,8 +17,7 @@ namespace INV.Controllers
         [Header("Struct References")] [SerializeField]
         private BehavioralPlayerData behavioralPlayerData;
 
-        [Header("Class References")] [SerializeField]
-        internal InputData inputData;
+        // [Header("Class References")] [SerializeField]
 
         #region Event Functions
 
@@ -44,40 +44,19 @@ namespace INV.Controllers
         private void InitializeSubscribes()
         {
             Actions.onInteractedWithObstacle += OnInteractedWithObstacle;
-
-            // InputHandler.onPointerMoved += OnPointerMoved;
-            // InputHandler.onPointerPressed += OnPointerPressed;
-            // InputHandler.onPointerRemoved += OnPointerRemoved;
+            
+            // InputsEvent<Vector3>.onPointerPressed += OnPointerPressed;
         }
 
         private void UnSubscribe()
         {
             Actions.onInteractedWithObstacle -= OnInteractedWithObstacle;
-
-            // InputHandler.onPointerMoved -= OnPointerMoved;
-            // InputHandler.onPointerPressed -= OnPointerPressed;
-            // InputHandler.onPointerRemoved -= OnPointerRemoved;
         }
 
         #endregion
 
         #region Subscribe Events
-
-        private void OnPointerRemoved(Vector3 mouseMovementDirection)
-        {
-            inputData.isPressing = false;
-        }
-
-        private void OnPointerPressed(Vector3 mouseMovementDirection)
-        {
-            inputData.isPressing = true;
-        }
-
-        private void OnPointerMoved(Vector3 mouseMovementDirection)
-        {
-            playerController.MoveAxisX(mouseMovementDirection);
-        }
-
+        
         private void OnInteractedWithObstacle()
         {
             Actions.onInteractedWithObstacle += InteractedWithObstacle;
@@ -135,6 +114,12 @@ namespace INV.Controllers
         }
 
         #endregion
+
+        #endregion
+
+        #region Interface Implementations
+        
+        
 
         #endregion
     }
