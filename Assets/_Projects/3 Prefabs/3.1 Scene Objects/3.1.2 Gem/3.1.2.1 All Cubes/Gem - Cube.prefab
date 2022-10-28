@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5526139924268195603}
   - component: {fileID: 2184010354532053141}
   - component: {fileID: 415980838040295805}
+  - component: {fileID: 2295903282046332200}
   m_Layer: 0
   m_Name: '[Holder] Gem - Cube'
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2295903282046332200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282814065581435672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39958006, y: 0.2650095, z: 0.5726967}
+  m_Center: {x: -0.000000007450581, y: 0.1325046, z: 0.0007580519}
 --- !u!1 &7455517820557028732
 GameObject:
   m_ObjectHideFlags: 0

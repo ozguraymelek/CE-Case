@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using INV.Managers;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace INV.Interfaces
 {
@@ -195,5 +196,18 @@ namespace INV.Interfaces
         }
 
         #endregion
+    }
+
+    namespace Factory
+    {
+        public interface IFactoryGetDoorData
+        {
+            string GetDoorData();
+        }
+
+        public interface IFactoryKeyDoorData
+        {
+            string KeyDoorData();
+        }
     }
 }
