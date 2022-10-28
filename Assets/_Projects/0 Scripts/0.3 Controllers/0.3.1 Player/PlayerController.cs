@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace INV.Controllers
 {
-    public class PlayerController : MonoBehaviour , IScreenWidthMultiplier
+    public class PlayerController : MonoBehaviour
     {
         [Header("Interface References")] 
         [SerializeField] private IBehavioralPlayerData iBehavioralPlayerData;
@@ -17,6 +17,7 @@ namespace INV.Controllers
 
         private void Start()
         {
+            InitializeInterfaces();
             InitializeSubscribes();
         }
 
@@ -26,7 +27,7 @@ namespace INV.Controllers
 
         private void InitializeSubscribes()
         {
-            GameEvents.onStart += OnStart;
+            Actions.onStart += OnStart;
         }
 
         private void UnSubscribe()
@@ -54,7 +55,6 @@ namespace INV.Controllers
 
         private void OnStart()
         {
-            InitializeInterfaces();
             print("tten");
         }
         
@@ -62,10 +62,6 @@ namespace INV.Controllers
 
         #region Interface Implementations
         
-        public float GetScreenWidth()
-        {
-            return iScreenMultiplierData.GetScreenWidth();
-        }
 
         #endregion
         
@@ -73,10 +69,8 @@ namespace INV.Controllers
         
         internal void MoveAxisX(Vector3 mouseMovementDirection)
         {
-            print(GetScreenWidth());
-            
             var mouseToWorldDirection =
-                new Vector3(mouseMovementDirection.x * GetScreenWidth(), 0f, 0f);
+                new Vector3((float)(mouseMovementDirection.x * iScreenMultiplierData?.GetScreenWidth()), 0f, 0f);
             
             print("GetPlayerSensitivityData: " + iBehavioralPlayerData.GetPlayerSensitivityData());
 

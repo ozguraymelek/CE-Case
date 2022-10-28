@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using INV.Managers;
@@ -77,10 +78,11 @@ namespace INV.Interfaces
     {
         #region Unity Events
 
-        public interface IEventsUnityFunctions : IOnEnable, IOnAwake, IOnStart, IOnUpdate, IOnFixedUpdate, IOnLateUpdate
+        public interface IEventsUnityFunctions : IOnStart, IOnFixedUpdate
         {
             // If there is a script that you need to use "all" unity event interfaces,
             // apply this interface (IEventsUnityFunctions) directly!
+            new void Invoke(Action onStart);
         }
 
         public interface IOnEnable
@@ -95,7 +97,7 @@ namespace INV.Interfaces
 
         public interface IOnStart
         {
-            void OnStart();
+            void Invoke(Action action);
         }
 
         public interface IOnUpdate
@@ -105,7 +107,7 @@ namespace INV.Interfaces
     
         public interface IOnFixedUpdate
         {
-            void OnFixedUpdate();
+            void Invoke(Action action);
         }
     
         public interface IOnLateUpdate

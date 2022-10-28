@@ -43,7 +43,7 @@ namespace INV.Controllers
 
         private void InitializeSubscribes()
         {
-            GameEvents.onInteractedWithObstacle += OnInteractedWithObstacle;
+            Actions.onInteractedWithObstacle += OnInteractedWithObstacle;
 
             InputHandler.onPointerMoved += OnPointerMoved;
             InputHandler.onPointerPressed += OnPointerPressed;
@@ -52,7 +52,7 @@ namespace INV.Controllers
 
         private void UnSubscribe()
         {
-            GameEvents.onInteractedWithObstacle -= OnInteractedWithObstacle;
+            Actions.onInteractedWithObstacle -= OnInteractedWithObstacle;
 
             InputHandler.onPointerMoved -= OnPointerMoved;
             InputHandler.onPointerPressed -= OnPointerPressed;
@@ -80,7 +80,7 @@ namespace INV.Controllers
 
         private void OnInteractedWithObstacle()
         {
-            GameEvents.onInteractedWithObstacle += InteractedWithObstacle;
+            Actions.onInteractedWithObstacle += InteractedWithObstacle;
         }
 
         #endregion

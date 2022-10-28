@@ -7,13 +7,27 @@ using UnityEngine;
 
 namespace INV.Events
 {
-    public class GameEvents : MonoBehaviour
+    public class Actions : IEventsUnityFunctions
     {
         [Header("<- No Parameter -> Actions for Gameplay")]
         public static Action onLevelStarted, onLevelFinished, onFailed, onSuccess, onInteractedWithObstacle;
 
         [Header("<- No Parameter -> Actions for Event Functions")]
         public static Action onEnable, onAwake, onStart, onUpdate, onFixedUpdate, onLateUpdate;
+
+        public void Invoke(Action action)
+        {
+            action?.Invoke();
+        }
+    }
+    
+    public class GameEvents : MonoBehaviour
+    {
+
+        private void InitializeActions()
+        {
+            var actions = new Actions();
+        }
 
         #region All Functions
 
@@ -25,21 +39,6 @@ namespace INV.Events
             ResetGameActions();
         }
 
-        private void Start()
-        {
-            OnStart();
-        }
-
-        private void Update()
-        {
-            OnUpdate();
-        }
-
-        private void FixedUpdate()
-        {
-            OnFixedUpdate();
-        }
-
         #endregion
         
         #region Initializes
@@ -48,21 +47,21 @@ namespace INV.Events
         
         private void ResetGameplayActions()
         {
-            onLevelStarted = null;
-            onLevelFinished = null;
-            onFailed = null;
-            onSuccess = null;
-            onInteractedWithObstacle = null;
+            Actions.onLevelStarted = null;
+            Actions.onLevelFinished = null;
+            Actions.onFailed = null;
+            Actions.onSuccess = null;
+            Actions.onInteractedWithObstacle = null;
         }
 
         private void ResetGameActions()
         {
-            onEnable = null;
-            onAwake = null;
-            onStart = null;
-            onUpdate = null;
-            onFixedUpdate = null;
-            onLateUpdate = null;
+            Actions.onEnable = null;
+            Actions.onAwake = null;
+            Actions.onStart = null;
+            Actions.onUpdate = null;
+            Actions.onFixedUpdate = null;
+            Actions.onLateUpdate = null;
         }
         
         #endregion
@@ -75,64 +74,31 @@ namespace INV.Events
 
         public void OnLevelStarted()
         {
-            onLevelStarted?.Invoke();
+            Actions.onLevelStarted?.Invoke();
         }
         
         public void OnLevelFinished()
         {
-            onLevelFinished?.Invoke();
+            Actions.onLevelFinished?.Invoke();
         }
         
         public void OnFailed()
         {
-            onFailed?.Invoke();
+            Actions.onFailed?.Invoke();
         }
         
         public void OnSuccess()
         {
-            onSuccess?.Invoke();
+            Actions.onSuccess?.Invoke();
         }
         
         public void OnInteractedWithObstacle()
         {
-            onInteractedWithObstacle?.Invoke();
+            Actions.onInteractedWithObstacle?.Invoke();
         }
 
         #endregion
-
-        #region Event Functions
-
-        public void OnEnableA() //not event function.
-        {
-            onEnable?.Invoke();
-        }
-
-        public void OnAwake()
-        {
-            onAwake?.Invoke();
-        }
-
-        public void OnStart()
-        {
-            onStart?.Invoke();
-        }
         
-        public void OnUpdate()
-        {
-            onUpdate?.Invoke();
-        }
-        
-        public void OnFixedUpdate()
-        {
-            onFixedUpdate?.Invoke();
-        }
-        
-        public void OnLateUpdate()
-        {
-            onLateUpdate?.Invoke();
-        }
-        #endregion
-
         #endregion
 
         #endregion
